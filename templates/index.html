@@ -1,0 +1,28 @@
+$def with (movies,count,key,old_key)
+<form action='/' method='post'>
+    <input type='text' name='title'/>
+    <input type='submit' value='搜索电影'/>
+</form>
+<p>
+$if old_key:
+    查询记录：
+    $for n in old_key[:7]:
+        $n ,
+</p>
+</p>
+
+<h4>Welcome to here</h4>
+<h1>Crossin's Movie Site</h1>
+<hr>
+$if count > 0:
+    <p>共 $count 部影片
+    $if key:
+         与<b><u> $key </u></b>有关
+    </p>
+    <p>影片列表：</p>
+    $for movie in movies:
+        <li>
+        <a href="/movie/$movie['id']">$movie['title']</a>
+        </li>
+$else:
+    <p>啊咧，没能找到符合条件的影片</p>
